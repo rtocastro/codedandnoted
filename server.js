@@ -14,8 +14,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to serve up static assets from the public folder
 app.use(express.static('public'));
-// Send all the requests that begin with /api to the index.js in the routes folder
+
+// Send all the requests that begin with /api
 app.use('/api', api);
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
