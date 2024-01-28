@@ -24,26 +24,28 @@ router.post('/notes', (req, res) => {
 
 })
 
+// router.delete('/notes/:id', (req, res) => {
+
+//     var oldData = fs.readFileSync("./db/db.json", "utf8");
+
+//     const delDb = db.filter((note) =>
+//     note.id !== req.params.id)
+
+//     fs.writeFileSync('db/db.json', JSON.stringify(delDb))
+
+//     res.json(delDb)
+// });
+
+
 router.delete('/notes/:id', (req, res) => {
 
-    var oldData = fs.readFileSync("./db/db.json", "utf8");
-    //const dataJSON = JSON.parse(data);
-    const delDb = db.filter((note) =>
-    note.id !== req.params.id)
-  
-    
-    //const delDb = db.filter((note) =>
+    const oldData = fs.readFileSync("./db/db.json", "utf8");
+    const parsedData = JSON.parse(oldData);
+    const delDb = parsedData.filter((note) => note.id !== req.params.id);
 
-    
-  
+    fs.writeFileSync('./db/db.json', JSON.stringify(delDb));
 
-
-       // note.id !== req.params.id)
-
-
-    fs.writeFileSync('db/db.json', JSON.stringify(delDb))
-
-    res.json(delDb)
+    res.json(delDb);
 });
 
 module.exports = router;
