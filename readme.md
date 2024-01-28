@@ -18,7 +18,7 @@ Just VS code/Terminal to run the server and browser to view application
 
 You can use this app to keep track of tasks or to take notes on anything
 
-    ![screenshot](/public/assets/images/notepadscreenshot.png?raw-true)
+    ![screenshot](</public/assets/images/notepadscreenshot.png>)
 
 
 ## Credits
