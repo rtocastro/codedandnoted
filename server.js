@@ -4,7 +4,7 @@ const path = require('path');
 // Import the feedback router
 const api = require('./api/notes');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware to serve up static assets from the public folder
-app.use(express.static('public'));
+app.use(express.static(path.join (__dirname,'public')));
 
 // Send all the requests that begin with /api
 app.use('/api', api);
@@ -32,10 +32,6 @@ app.get('*', (req, res) =>
 
 
 //run locally
-// app.listen(PORT, () =>
-//   console.log(`App listening at http://localhost:${PORT} 🚀`)
-// );
-
-
-//railway port
-app.listen(port, "0.0.0.0");
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
