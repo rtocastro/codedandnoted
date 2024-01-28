@@ -31,7 +31,11 @@ app.get('*', (req, res) =>
 );
 
 
+//run locally
+// app.listen(PORT, () =>
+//   console.log(`App listening at http://localhost:${PORT} 🚀`)
+// );
 
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+
+//railway port
+app.listen(port, "0.0.0.0");
